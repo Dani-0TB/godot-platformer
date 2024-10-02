@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://mnss5rhkr6xr"]
+
+[ext_resource type="Texture2D" uid="uid://xvwr1r1j305b" path="res://Assets/tilemap-characters_packed.png" id="1_emrwv"]
+[ext_resource type="Script" path="res://Scenes/PlayerController/CharacterController.cs" id="1_suf1k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ittg"]
+size = Vector2(14, 23)
+
+[node name="CharacterController" type="CharacterBody2D"]
+script = ExtResource("1_suf1k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_emrwv")
+hframes = 9
+vframes = 3
+
+[node name="WorldCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_0ittg")
