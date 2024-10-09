@@ -1,7 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://mnss5rhkr6xr"]
+[gd_scene load_steps=9 format=3 uid="uid://mnss5rhkr6xr"]
 
 [ext_resource type="Texture2D" uid="uid://xvwr1r1j305b" path="res://Assets/tilemap-characters_packed.png" id="1_emrwv"]
 [ext_resource type="Script" path="res://Scenes/PlayerController/CharacterController.cs" id="1_suf1k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_581ai"]
+atlas = ExtResource("1_emrwv")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckoxr"]
+atlas = ExtResource("1_emrwv")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_det51"]
+atlas = ExtResource("1_emrwv")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bog0o"]
+atlas = ExtResource("1_emrwv")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xuqil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_581ai")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckoxr")
+}],
+"loop": true,
+"name": &"jumping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_det51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bog0o")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ittg"]
 size = Vector2(14, 23)
@@ -9,10 +55,10 @@ size = Vector2(14, 23)
 [node name="CharacterController" type="CharacterBody2D"]
 script = ExtResource("1_suf1k")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_emrwv")
-hframes = 9
-vframes = 3
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xuqil")
+animation = &"idle"
+frame_progress = 0.986253
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
