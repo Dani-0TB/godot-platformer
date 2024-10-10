@@ -4,11 +4,11 @@ using System;
 public partial class CharacterController : CharacterBody2D
 {
 	[Export]
-	public float Speed = 50f;
-	public float MaxSpeed = 200f;
-	public float JumpVelocity = -400.0f;
-	public float FloorFriction = 50f;
-	public float AirFriction = 10f;
+	public float acceleration = 10f;
+	public float maxSpeed = 128f;
+	public float jumpVelocity = -400.0f;
+	public float floorFriction = 10f;
+	public float airFriction = 5f;
 
 	private AnimatedSprite2D _sprite;
 
@@ -27,14 +27,14 @@ public partial class CharacterController : CharacterBody2D
 			velocity += GetGravity() * (float)delta;
 			if (Input.IsActionJustReleased("jump"))
 			{
-				velocity.Y /= 2;
+				velocity.Y /= 4;
 			}
 		} 
 
 		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
-			velocity.Y = JumpVelocity;
+			velocity.Y = jumpVelocity;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
@@ -42,17 +42,17 @@ public partial class CharacterController : CharacterBody2D
 		Vector2 direction = Input.GetVector("left", "right", "up", "down");
 		if (direction != Vector2.Zero)
 		{
-			velocity.X += direction.X * Speed;
-			velocity.X = Mathf.Clamp(velocity.X, -MaxSpeed, MaxSpeed);
+			velocity.X += direction.X * acceleration;
+			velocity.X = Mathf.Clamp(velocity.X, -maxSpeed, maxSpeed);
 		}
 		else
 		{	
 			if (!IsOnFloor()) 	
 			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, AirFriction);
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, airFriction);
 			} else
 			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, FloorFriction);
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, floorFriction);
 			}
 		}
 

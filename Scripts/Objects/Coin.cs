@@ -1,7 +1,4 @@
 using Godot;
-using System;
-using System.Reflection;
-
 public partial class Coin : Area2D
 {
 	private AnimatedSprite2D _animatedSprite;
