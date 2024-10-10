@@ -40,5 +40,3 @@ frame_progress = 0.626339
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(9, 7)
 shape = SubResource("CircleShape2D_bixvq")
-
-[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

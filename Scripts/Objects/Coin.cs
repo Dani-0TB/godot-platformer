@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection;
 
 public partial class Coin : Area2D
 {
@@ -8,11 +9,11 @@ public partial class Coin : Area2D
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("Sprite");
 		_animatedSprite.Play("idle");
-		
+		BodyEntered += OnCoinBodyEntered;
 	}
 
-	public void OnBodyEntered(PhysicsBody2D other)
-	{
+    private void OnCoinBodyEntered(Node2D body)
+    {
 		QueueFree();
-	}
+    }
 }
