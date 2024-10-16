@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2i0k3u4u187v"]
+
+[ext_resource type="PackedScene" uid="uid://mnss5rhkr6xr" path="res://Scenes/PlayerController/character_controller.tscn" id="1_3ua4s"]
+[ext_resource type="Texture2D" uid="uid://6pv5tmmnpxa0" path="res://icon.svg" id="2_fj2hv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdanq"]
+size = Vector2(653, 20)
+
+[node name="World_1_3" type="Node2D"]
+
+[node name="CharacterController" parent="." instance=ExtResource("1_3ua4s")]
+position = Vector2(414, 180)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(312.5, 306)
+scale = Vector2(5.24219, 1)
+texture = ExtResource("2_fj2hv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(321.5, 252)
+shape = SubResource("RectangleShape2D_wdanq")

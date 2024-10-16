@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b22745iu4kndh"]
+
+[ext_resource type="Script" path="res://Scripts/Interface/Ui.cs" id="1_rbau3"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = 54.0
+offset_bottom = 52.0
+script = ExtResource("1_rbau3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

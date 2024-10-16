@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class CharacterController : CharacterBody2D
 {
@@ -9,6 +8,8 @@ public partial class CharacterController : CharacterBody2D
 	public float jumpVelocity = -400.0f;
 	public float floorFriction = 10f;
 	public float airFriction = 5f;
+	public int score = 0;
+	public bool JumpReleased = false;
 
 	private AnimatedSprite2D _sprite;
 
@@ -25,9 +26,11 @@ public partial class CharacterController : CharacterBody2D
 		if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
-			if (Input.IsActionJustReleased("jump"))
+			if (Input.IsActionJustReleased("jump") && !JumpReleased)
 			{
 				velocity.Y /= 4;
+				JumpReleased = true;
+
 			}
 		} 
 
@@ -35,6 +38,7 @@ public partial class CharacterController : CharacterBody2D
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = jumpVelocity;
+			JumpReleased = false;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
@@ -62,8 +66,33 @@ public partial class CharacterController : CharacterBody2D
 		MoveAndSlide();
 	}
 
-	public void ChangeSpriteDirection()
+    public override void _Process(double delta)
+    {
+		if (Input.IsActionJustPressed("subir_puntaje"))
+		{
+			score += 1;
+		}
+    }
+
+	public void IncreaseScore(int amount)
 	{
+		score += amount;
+	}
+    public void ChangeSpriteDirection()
+	{
+		// bool? setFlip()
+		// {
+		// 	if(Velocity.X > 0)
+		// 		return true;
+		// 	if(Velocity.X < 0)
+		// 		return false;
+		// 	return null;
+		// }
+
+		// bool? flip = setFlip();
+		// if(flip != null)
+		// 	_sprite.FlipH = flip.Value;
+		
 		if (Velocity.X > 0)
 		{
 			_sprite.FlipH = true;

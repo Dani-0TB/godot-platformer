@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://mnss5rhkr6xr"]
 
 [ext_resource type="Texture2D" uid="uid://xvwr1r1j305b" path="res://Assets/tilemap-characters_packed.png" id="1_emrwv"]
-[ext_resource type="Script" path="res://Scenes/PlayerController/CharacterController.cs" id="1_suf1k"]
+[ext_resource type="Script" path="res://Scripts/Controllers/CharacterController.cs" id="1_l4gf0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_581ai"]
 atlas = ExtResource("1_emrwv")
@@ -53,12 +53,14 @@ animations = [{
 size = Vector2(14, 23)
 
 [node name="CharacterController" type="CharacterBody2D"]
-script = ExtResource("1_suf1k")
+z_index = 1
+collision_layer = 263
+script = ExtResource("1_l4gf0")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xuqil")
 animation = &"idle"
-frame_progress = 0.986253
+frame_progress = 0.490399
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
