@@ -26,10 +26,9 @@ public partial class CharacterController : CharacterBody2D
 		if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
-			if (Input.IsActionJustReleased("jump") && !JumpReleased)
+			if (Input.IsActionJustReleased("jump") && velocity.Y < 0)
 			{
 				velocity.Y /= 4;
-				JumpReleased = true;
 
 			}
 		} 
@@ -38,7 +37,6 @@ public partial class CharacterController : CharacterBody2D
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = jumpVelocity;
-			JumpReleased = false;
 		}
 
 		// Get the input direction and handle the movement/deceleration.

@@ -5,13 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://bw47wsiuyw1sg" path="res://Scenes/Objects/coin.tscn" id="3_v4uf4"]
 [ext_resource type="PackedScene" uid="uid://b22745iu4kndh" path="res://Scenes/ui.tscn" id="4_7hsm6"]
 [ext_resource type="PackedScene" uid="uid://bxoxrbys2tknh" path="res://Scenes/Objects/next_level_door.tscn" id="5_j2lor"]
-[ext_resource type="PackedScene" uid="uid://dvvkkai7ktbl2" path="res://Scenes/Levels/world_1_2.tscn" id="6_wcsr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2e3ur"]
 size = Vector2(20, 265)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xlyu"]
 size = Vector2(90, 18)
+
+[sub_resource type="Resource" id="Resource_3onri"]
+metadata/__load_path__ = "res://Scenes/Levels/world_1_2.tscn"
 
 [node name="World1" type="Node2D"]
 
@@ -92,4 +94,4 @@ position = Vector2(558, 270)
 
 [node name="NextLevelDoor" parent="." instance=ExtResource("5_j2lor")]
 position = Vector2(523, 270)
-NextLevel = ExtResource("6_wcsr0")
+NextLevel = SubResource("Resource_3onri")
