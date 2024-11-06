@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://dciwddi1mcfl0"]
+[gd_scene load_steps=10 format=4 uid="uid://dciwddi1mcfl0"]
 
 [ext_resource type="PackedScene" uid="uid://mnss5rhkr6xr" path="res://Scenes/PlayerController/character_controller.tscn" id="1_ok1x2"]
 [ext_resource type="TileSet" uid="uid://dq0ko20hh0yi5" path="res://Resources/tileset.tres" id="2_5x3qk"]
 [ext_resource type="PackedScene" uid="uid://bw47wsiuyw1sg" path="res://Scenes/Objects/coin.tscn" id="3_v4uf4"]
 [ext_resource type="PackedScene" uid="uid://b22745iu4kndh" path="res://Scenes/ui.tscn" id="4_7hsm6"]
 [ext_resource type="PackedScene" uid="uid://bxoxrbys2tknh" path="res://Scenes/Objects/next_level_door.tscn" id="5_j2lor"]
+[ext_resource type="PackedScene" uid="uid://bmtftap8uyenp" path="res://Scenes/Enemies/generic_enemy.tscn" id="6_4oka4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2e3ur"]
 size = Vector2(20, 265)
@@ -78,12 +79,6 @@ position = Vector2(342, 108)
 [node name="Coin3" parent="Coins" instance=ExtResource("3_v4uf4")]
 position = Vector2(378, 108)
 
-[node name="Coin10" parent="Coins" instance=ExtResource("3_v4uf4")]
-position = Vector2(468, 126)
-
-[node name="Coin11" parent="Coins" instance=ExtResource("3_v4uf4")]
-position = Vector2(504, 126)
-
 [node name="Coin12" parent="Coins" instance=ExtResource("3_v4uf4")]
 position = Vector2(594, 270)
 
@@ -95,3 +90,8 @@ position = Vector2(558, 270)
 [node name="NextLevelDoor" parent="." instance=ExtResource("5_j2lor")]
 position = Vector2(523, 270)
 NextLevel = SubResource("Resource_3onri")
+
+[node name="EnemyPool" type="Node" parent="."]
+
+[node name="GenericEnemy" parent="EnemyPool" instance=ExtResource("6_4oka4")]
+position = Vector2(504, 108)

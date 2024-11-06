@@ -54,7 +54,8 @@ size = Vector2(14, 23)
 
 [node name="CharacterController" type="CharacterBody2D"]
 z_index = 1
-collision_layer = 263
+position = Vector2(8, 0)
+collision_layer = 262
 script = ExtResource("1_l4gf0")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
